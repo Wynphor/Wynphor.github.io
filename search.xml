@@ -56,33 +56,11 @@
     
     
     <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>暮雨浔茶 - Wynphor の Nest</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
       
         <content type="html"><![CDATA[<hr><h1 id="关于Wynphor"><a href="#关于Wynphor" class="headerlink" title="关于Wynphor"></a><strong>关于<em>Wynphor</em></strong></h1><blockquote><p><em>挽枫叶之思念，叹人间之惊鸿，如此，足矣。</em></p></blockquote><p>一只努力拓展各个方向的计科小白，一位温柔有趣且略微可爱的绿老头，一个历经磨难却早已忘了初衷的废物，一名妄图坦然行走于时间的旅者，一个想要走出悲伤的梦的小孩子，哦，以及一个萍水相逢并祝福你的陌生人~  </p><hr><h1 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a><strong>关于本站</strong></h1><p>咲楓希望在互联网的隐蔽角落里拥有一片属于自己的庇护所，留下属于自己的足迹，以此对抗时间的虚无。本站会记录博主本人的日常，包括但不限于日常吐槽，个人爱好，技术分享，生活感悟，学习笔记。</p><p>咲楓会努力锻炼自己的表达能力哒，但因为正处于求学阶段，可能还是会以记录感想的流水账为主。</p><blockquote><p><strong>特别说明：本站内容仅为博主个人记录所用哦，如有不喜……出站左转！</strong> </p></blockquote>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -103,6 +81,28 @@
       <title>标签</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

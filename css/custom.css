@@ -12,7 +12,7 @@
 }
 
 /* 闪烁变动颜色连续渐变 */
-#site-name,
+.site-name,
 #site-title,
 #site-subtitle,
 #post-info,
@@ -22,14 +22,20 @@
 }
 
 /* 日间模式不生效
-[data-theme="light"] #site-name,
+[data-theme="light"] .site-name,
 [data-theme="light"] #site-title,
 [data-theme="light"] #site-subtitle,
 [data-theme="light"] #post-info {
   animation: none;
 }
+[data-theme="light"] .author-info__name,
+[data-theme="light"] .author-info__description {
+  animation: none;
+}
 夜间模式生效
-[data-theme="dark"] #site-name,
+[data-theme="dark"] .site-name {
+  animation: light_15px 10s linear infinite;
+}
 [data-theme="dark"] #site-title {
   animation: light_15px 10s linear infinite;
 }
@@ -37,6 +43,12 @@
   animation: light_10px 10s linear infinite;
 }
 [data-theme="dark"] #post-info {
+  animation: light_5px 10s linear infinite;
+}
+[data-theme="dark"] .author-info__name {
+  animation: light_10px 10s linear infinite;
+}
+[data-theme="dark"].author-info__description {
   animation: light_5px 10s linear infinite;
 }
 关键帧描述

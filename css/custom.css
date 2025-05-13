@@ -32,9 +32,6 @@
 }
 
 /* 夜间模式生效 */
-[data-theme="dark"] .site-name {
-  animation: light_15px 10s linear infinite;
-}
 [data-theme="dark"] #site-title {
   animation: light_15px 10s linear infinite;
 }
@@ -44,12 +41,17 @@
 [data-theme="dark"] #post-info {
   animation: light_5px 10s linear infinite;
 }
+
+[data-theme="dark"] .site-name {
+  animation: light_15px 10s linear infinite;
+}
 [data-theme="dark"] .author-info-name {
   animation: light_15px 10s linear infinite;
 }
 [data-theme="dark"] .author-info-description {
   animation: light_10px 10s linear infinite;
 }
+
 /* 关键帧描述 */
 @keyframes light_15px {
   0% {

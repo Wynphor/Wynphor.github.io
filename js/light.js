@@ -27,8 +27,6 @@ function changeColor() {
         }
     } else {
         // 白天模式恢复默认
-        if (document.getElementById("site-name"))
-            document.getElementById("site-name").style.textShadow = "#1e1e1ee0 1px 1px 1px";
         if (document.getElementById("site-title"))
             document.getElementById("site-title").style.textShadow = "#1e1e1ee0 1px 1px 1px";
         if (document.getElementById("site-subtitle"))
@@ -36,6 +34,7 @@ function changeColor() {
         if (document.getElementById("post-info"))
             document.getElementById("post-info").style.textShadow = "#1e1e1ee0 1px 1px 1px";
         try {
+            document.getElementsByClassName("site-name").style.textShadow = "#1e1e1ee0 1px 1px 1px";
             document.getElementsByClassName("author-info__name")[0].style.textShadow = "";
             document.getElementsByClassName("author-info__description")[0].style.textShadow = "";
         } catch {

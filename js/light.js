@@ -16,8 +16,8 @@ function changeColor() {
             document.getElementById("post-info").style.textShadow = arr[idx] + " 0 0 5px";
         try {
             document.getElementsByClassName("site-name")[0].style.textShadow = arr[idx] + " 0 0 15px";
-            document.getElementsByClassName("author-info__name")[0].style.textShadow = arr[idx] + " 0 0 12px";
-            document.getElementsByClassName("author-info__description")[0].style.textShadow = arr[idx] + " 0 0 12px";
+            document.getElementsByClassName("author-info-name")[0].style.textShadow = arr[idx] + " 0 0 12px";
+            document.getElementsByClassName("author-info-description")[0].style.textShadow = arr[idx] + " 0 0 12px";
         } catch {
             
         }
@@ -35,8 +35,8 @@ function changeColor() {
             document.getElementById("post-info").style.textShadow = "#1e1e1ee0 1px 1px 1px";
         try {
             document.getElementsByClassName("site-name").style.textShadow = "#1e1e1ee0 1px 1px 1px";
-            document.getElementsByClassName("author-info__name")[0].style.textShadow = "";
-            document.getElementsByClassName("author-info__description")[0].style.textShadow = "";
+            document.getElementsByClassName("author-info-name")[0].style.textShadow = "";
+            document.getElementsByClassName("author-info-description")[0].style.textShadow = "";
         } catch {
             
         }

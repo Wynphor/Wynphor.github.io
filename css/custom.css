@@ -14,7 +14,7 @@
 #site-title,
 #site-subtitle,
 #post-info,
-.author-info__name,
-.author-info__description {
+.author-info-name,
+.author-info-description {
   transition: text-shadow 1s linear !important;
 }

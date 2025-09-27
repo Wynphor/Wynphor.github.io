@@ -44,6 +44,7 @@
 #aside-content>.card-widget  {
 	background: rgba(255,255,255,0.8);
 }
+
 [data-theme=dark] #aside-content>.card-widget  {
 	background: rgba(22, 18, 18, 0.8);
 }
@@ -51,5 +52,14 @@
     background: rgba(25,25,25,.8);
 }
 [data-theme=dark] .layout>#post{
+    background: rgba(25,25,25,.8);
+}
+[data-theme=dark] .layout>#page{
+    background: rgba(25,25,25,.8);
+}
+[data-theme=dark] .layout>#archive{
+    background: rgba(25,25,25,.8);
+}
+[data-theme=dark] .layout>#shuoshuo{
     background: rgba(25,25,25,.8);
 }

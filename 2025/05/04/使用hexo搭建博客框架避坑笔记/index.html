@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>使用hexo搭建博客框架避坑笔记 | 暮雨浔茶</title><meta name="author" content="⎛⎝Wynphor⎠⎞"><meta name="copyright" content="⎛⎝Wynphor⎠⎞"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="引言 咲楓注：此次初体验让我感受到了，win的图形化界面及其生态对小白相当友好，但当涉及非图形化界面时，win真的是一坨……\x7e~不可名状之物~~，也不知道Linux会不会好一点。我个人是把环境配了一遍又一遍（心累，也可能是这方面经验比较少吧）。   1. CMD和git-bash的权限问题 当你把文件的移到D盘后，总是会发生一些奇奇怪怪的报错诶~   File Not Found 原因可能是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用hexo搭建博客框架避坑笔记">
+<meta property="og:url" content="https://wynphor.github.io/2025/05/04/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E9%81%BF%E5%9D%91%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="暮雨浔茶">
+<meta property="og:description" content="引言 咲楓注：此次初体验让我感受到了，win的图形化界面及其生态对小白相当友好，但当涉及非图形化界面时，win真的是一坨……\x7e~不可名状之物~~，也不知道Linux会不会好一点。我个人是把环境配了一遍又一遍（心累，也可能是这方面经验比较少吧）。   1. CMD和git-bash的权限问题 当你把文件的移到D盘后，总是会发生一些奇奇怪怪的报错诶~   File Not Found 原因可能是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wynphor.github.io/images/text/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E9%81%BF%E5%9D%91%E7%AC%94%E8%AE%B0.jpeg">
+<meta property="article:published_time" content="2025-05-04T15:29:30.000Z">
+<meta property="article:modified_time" content="2025-07-07T14:03:17.671Z">
+<meta property="article:author" content="⎛⎝Wynphor⎠⎞">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="butterfly">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wynphor.github.io/images/text/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E9%81%BF%E5%9D%91%E7%AC%94%E8%AE%B0.jpeg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "使用hexo搭建博客框架避坑笔记",
+  "url": "https://wynphor.github.io/2025/05/04/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E9%81%BF%E5%9D%91%E7%AC%94%E8%AE%B0/",
+  "image": "https://wynphor.github.io/images/text/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E9%81%BF%E5%9D%91%E7%AC%94%E8%AE%B0.jpeg",
+  "datePublished": "2025-05-04T15:29:30.000Z",
+  "dateModified": "2025-07-07T14:03:17.671Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "⎛⎝Wynphor⎠⎞",
+      "url": "https://wynphor.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://wynphor.github.io/2025/05/04/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E9%81%BF%E5%9D%91%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '使用hexo搭建博客框架避坑笔记',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/transpancy.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(/img/dm12.webp);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-paper-plane"></i><span> 传送门</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 唱片机</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-hashtag"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/comments/"><i class="fa-fw fas fa-commenting"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-user"></i><span> 本楓</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/text/使用hexo搭建博客框架避坑笔记.jpeg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">暮雨浔茶</span></a><a class="nav-page-title" href="/"><span class="site-name">使用hexo搭建博客框架避坑笔记</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-paper-plane"></i><span> 传送门</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 唱片机</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-hashtag"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/comments/"><i class="fa-fw fas fa-commenting"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-user"></i><span> 本楓</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">使用hexo搭建博客框架避坑笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-04T15:29:30.000Z" title="发表于 2025-05-04 23:29:30">2025-05-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-07T14:03:17.671Z" title="更新于 2025-07-07 22:03:17">2025-07-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2025-07-07 22:03:17&quot;}" hidden></div><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
+<p>咲楓注：此次初体验让我感受到了，win的图形化界面及其生态对小白相当友好，但当涉及非图形化界面时，win真的是一坨……\x7e~不可名状之物~~，也不知道Linux会不会好一点。我个人是把环境配了一遍又一遍（心累，也可能是这方面经验比较少吧）。</p>
+</blockquote>
+<hr>
+<h2 id="1-CMD和git-bash的权限问题"><a href="#1-CMD和git-bash的权限问题" class="headerlink" title="1. CMD和git-bash的权限问题"></a>1. CMD和git-bash的权限问题</h2><blockquote>
+<p>当你把文件的移到D盘后，总是会发生一些奇奇怪怪的报错诶~</p>
+</blockquote>
+<ul>
+<li><p><strong>File Not Found</strong></p>
+<p>原因可能是以下几点：</p>
+<ol>
+<li>当前身份权限不足。尝试提升至管理员权限，或开放该文件夹的权限（不建议这么做）。</li>
+<li>环境变量错误，通俗来讲就是你原来储存的文件访问路径错误。这个一般是自己乱改导致的，改回去或者干脆重新再来就好。</li>
+<li>文件不存在。这个概率很小啦，要么是你就在该文件夹的子目录下（那当然找不到了），要么是下载文件到本地时网络有问题，文件存在损坏（这个一般安装时就会报错了）。</li>
+</ol>
+</li>
+<li><p><strong>Invalid Command</strong></p>
+<blockquote>
+<p>例：Usage: hexo <command></p>
+</blockquote>
+<ol>
+<li><p>当前身份权限不足。尝试提升至管理员权限，或开放该文件夹的权限（不建议这么做）。</p>
+</li>
+<li><p>操作对象错误。检查当前文件夹目录是否正确。</p>
+</li>
+<li><p>版本和插件适配问题。检查版本是否需要更新，是否缺少支持该命令的插件。</p>
+<blockquote>
+<p>例：<code>hexo d</code>命令就需要先安装自动部署发布工具<code>hexo-deployer-git</code></p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-npm-node-js-与git的版本适配问题"><a href="#2-npm-node-js-与git的版本适配问题" class="headerlink" title="2. npm(node.js)与git的版本适配问题"></a>2. npm(node.js)与git的版本适配问题</h2><ul>
+<li><p>一定要去<strong>官网</strong>下载最新最<strong>稳定</strong>的版本！</p>
+<p>一定要去<strong>官网</strong>下载最新最<strong>稳定</strong>的版本！</p>
+<p>一定要去<strong>官网</strong>下载最新最<strong>稳定</strong>的版本！</p>
+<p>可以运行以下命令检查版本号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">软件名 -v</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>千万不要相信自家电脑的应用商店，鬼知道它会给你安装哪个未完善的测试版本。（深恶痛绝）</p>
+</blockquote>
+</li>
+<li><p><strong>无法下载安装包</strong></p>
+<p>无脑运行npm清理更新三部曲</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm cache clean --force  # 清理缓存</span><br><span class="line">npm update -g npm        # 更新全局的所有依赖</span><br><span class="line">npm update               # 更新当前项目的所有依赖</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-git与GitHub的连接问题"><a href="#3-git与GitHub的连接问题" class="headerlink" title="3. git与GitHub的连接问题"></a>3. git与GitHub的连接问题</h2><ul>
+<li><p><strong>Validating config</strong></p>
+<p>一般就是以下几个方面的问题：</p>
+<ol>
+<li><p><strong>SSH</strong></p>
+<p>运行以下命令检查与GitHub的连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Repository</strong></p>
+<p>在本地博客目录下找到**_config.yml<strong>文件，用记事本打开，检查是否添加</strong>repository**地址。</p>
+</li>
+<li><p><strong>GitHub登录</strong></p>
+<p>运行以下命令检查当前用户和邮箱</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config get user.email</span><br><span class="line">git config get user.name</span><br></pre></td></tr></table></figure>
+
+<p>运行以下命令全局设置当前用户和邮箱</p>
+<blockquote>
+<p>用户邮箱必须与GitHub注册邮箱一致！！！</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;用户邮箱&quot;</span><br><span class="line">git config --global user.name &quot;用户名&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>VPN</strong></p>
+<p>生成并上传文件时尝试关掉VPN代理。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="4-hexo其它问题"><a href="#4-hexo其它问题" class="headerlink" title="4. hexo其它问题"></a>4. hexo其它问题</h2><blockquote>
+<p>说是hexo避坑指北，，其实也和hexo没太大关系</p>
+</blockquote>
+<ul>
+<li><p>命令执行后一直<strong>等待ing</strong></p>
+<p>国内连接不上外网，解决方法如下：</p>
+<ul>
+<li><p><del>科学上网（优先考虑）</del></p>
+</li>
+<li><p>npm换源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry                                 # 查看原来的源</span><br><span class="line">npm config set registry https://registry.npm.taobao.org # 修改为淘宝源</span><br><span class="line">npm config get registry                                 # 查看现在的源</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>Blog の 备份与迁移</strong></p>
+<blockquote>
+<p>本地魔改sever成功前，一定不要deploy！！！</p>
+</blockquote>
+<ul>
+<li><p><strong>Github备份</strong></p>
+<p>创建Github仓库，并运行以下命令（参考自官网）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd yourBlog #打开本地博客文件夹</span><br><span class="line">echo &quot;# repository&#x27;s name&quot; &gt;&gt; README.md #输出内容并添加到md中</span><br><span class="line">git init #创建空仓库</span><br><span class="line">git add . #将所有文件添加进git暂存区</span><br><span class="line">git commit -m &quot;first commit&quot; #将暂存区的文件提交到本地仓库，并添加提交说明</span><br><span class="line">git branch -M main #将当前分支重命名为 main</span><br><span class="line">git remote add origin git@github.com:username/repositoryname.git #使用SSH，添加一个名为 origin 的远程仓库地址，指向 GitHub 上的仓库</span><br><span class="line">git push -u origin main #首次将本地 main 分支的代码推送到远程仓库 origin，并设置上游关联（后续提交可直接用 git push）</span><br></pre></td></tr></table></figure>
+
+<p>另外，通过以下操作，可灵活管理 Git 远程仓库的配置：</p>
+<table>
+<thead>
+<tr>
+<th align="left">场景</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>更换仓库地址</strong></td>
+<td align="left"><code>git remote set-url origin 新地址</code></td>
+</tr>
+<tr>
+<td align="left"><strong>重命名远程别名</strong></td>
+<td align="left"><code>git remote rename origin 新别名</code></td>
+</tr>
+<tr>
+<td align="left"><strong>删除旧远程仓库</strong></td>
+<td align="left"><code>git remote remove origin</code></td>
+</tr>
+<tr>
+<td align="left"><strong>添加新远程仓库</strong></td>
+<td align="left"><code>git remote add origin 新地址</code></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>迁移</strong></p>
+<p>可运行以下命令将博客从GitHub重新clone到本地：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:username/repositoryname.git  #可从GitHub中SSH clone获取</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>图片路径问题（Butterfly主题）</strong></p>
+<p>有两种方法（源自DeepSeek）：</p>
+<ul>
+<li><p><strong>使用网络图片（图床&#x2F;CDN）</strong></p>
+<p>直接填写图片的完整 URL：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: url(https://example.com/path/to/image.jpg)</span><br></pre></td></tr></table></figure>
+
+<p><strong>优点</strong>：无需本地存储图片，适合直接引用外部资源。</p>
+</li>
+<li><p><strong>使用本地图片</strong></p>
+</li>
+</ul>
+<p>将图片文件放入 Hexo 项目的 <code>source/img</code> 目录（若目录不存在可手动创建）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 若网站根目录是 &#x27;/&#x27;（默认）</span><br><span class="line">background: url(/img/your-image.jpg)</span><br><span class="line"></span><br><span class="line"># 若网站根目录是子目录（如 `/blog`）</span><br><span class="line">background: url(/blog/img/your-image.jpg)</span><br></pre></td></tr></table></figure>
+
+<p><strong>优点</strong>：图片托管在本地，加载速度可控。</p>
+<p><strong>Butterfly官方文档是这样写的：</strong></p>
+<blockquote>
+<p>留意: 如果你的网站根目录不是’&#x2F;‘,使用本地图片时，需加上你的根目录。<br>例如：网站是 <a target="_blank" rel="noopener" href="https://yoursite.com/blog,%E5%BC%95%E7%94%A8%E4%B8%80%E5%BC%A0img/xx.png%E5%9B%BE%E7%89%87%EF%BC%8C%E5%88%99%E8%AE%BE%E7%BD%AE">https://yoursite.com/blog,引用一张img/xx.png图片，则设置</a> background 为 &#x2F;blog&#x2F;img&#x2F;xx.png</p>
+</blockquote>
+<blockquote>
+<p>**注意：**是<code>/</code>！不是<code>\</code>！</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>总之，<del>在科学上网的前提下，</del>按照网上教程或官方帮助文档一步步来，有问题先看报错信息，一般都是环境配置或版本问题，多问搜索引擎，多尝试，还是可以解决大部分问题的。</p>
+<p>而之所以写下这些，一方面是想纪念一下自己搭建博客的“壮举”（哈哈哈，毕竟才接触计算机不到一年嘛），另一方面，与其说是总结hexo的教训，也是在win环境下使用命令行的一些经验（小白的血泪教训）吧。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wynphor.github.io">⎛⎝Wynphor⎠⎞</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wynphor.github.io/2025/05/04/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E9%81%BF%E5%9D%91%E7%AC%94%E8%AE%B0/">https://wynphor.github.io/2025/05/04/使用hexo搭建博客框架避坑笔记/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wynphor.github.io" target="_blank">暮雨浔茶</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hexo/">hexo</a><a class="post-meta__tags" href="/tags/butterfly/">butterfly</a></div><div class="post-share"><div class="social-share" data-image="/images/text/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E9%81%BF%E5%9D%91%E7%AC%94%E8%AE%B0.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><link rel="stylesheet" href="/css/coin.css" media="defer" onload="this.media='all'"/><div class="post-reward"><button class="tip-button reward-button"><span class="tip-button__text">投喂咲枫</span><div class="coin-wrapper"><div class="coin"><div class="coin__middle"></div><div class="coin__back"></div><div class="coin__front"></div></div></div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></button></div><audio id="coinAudio" src="https://npm.elemecdn.com/akilar-candyassets@1.0.36/audio/aowu.m4a"></audio><script defer="defer" src="/js/coin.js"></script><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/05/08/%E6%AD%A5%E9%81%93%E4%B9%90%E9%A3%9E%E9%98%B2%E6%A3%80%E6%B5%8B%E6%8C%87%E5%8C%97/" title="步道乐飞防检测指北（校园跑均可参考））"><img class="cover" src="/images/text/%E6%AD%A5%E9%81%93%E4%B9%90%E9%A3%9E.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">步道乐飞防检测指北（校园跑均可参考））</div></div><div class="info-2"><div class="info-item-1"> 免责声明本文一切内容皆在帮助部分繁忙的大学生群体临时替代自己跑步，我也是每天事务繁杂那几个，所以通过自己研究找到了一些免费的方法在此作为经验公开免费分享给大家，如果失效了请自行寻找其他办法！ 使用任何第三方的代跑、外挂均有封号风险，使用时请注意跑步倍速和时长相对等，减少被封概率！怕别用用别怕，一切后果用户自负（我们学校是发现了封一个周，清零记录）。 再次声明本文以及本博客一切内容仅用于学习交流使用，禁止任何第三方和个人用于商业盈利行为！本博客基于 CC BY-NC-SA 4.0 DEED 协议，请遵守协议内容。 阅读和下载本文及本博客提供的资源即代表您已阅读同意接受上述风险。 如果本文有内容侵犯了您的合法权益，请出示相关证明文件并发送邮件致 wanf51566@gmail.com，本人于 24 小时内审核并删除相关内容。  前言 咲楓注：由于尚未接触过逆向工程相关领域，本文只能基于计算机基础知识，采用较为朴素的办法，来对步道乐飞软件进行破解。对于有能力的大佬，也可以自行尝试如物理破解，逆向工程，乃至社会工程学等方法。  检测机制及其破解方法 1....</div></div></div></a><a class="pagination-related" href="/2025/05/04/test/" title="test"><img class="cover" src="/images/text/test.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">test</div></div><div class="info-2"><div class="info-item-1">🎉测试成功~🎉</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">⎛⎝Wynphor⎠⎞</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Wynphor"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Wynphor" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://t.me/gulu_lulu" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a><a class="social-icon" href="mailto:wanf51566@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">咲枫很懒哦，什么也没有留下诶……</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-CMD%E5%92%8Cgit-bash%E7%9A%84%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98"><span class="toc-text">1. CMD和git-bash的权限问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-npm-node-js-%E4%B8%8Egit%E7%9A%84%E7%89%88%E6%9C%AC%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98"><span class="toc-text">2. npm(node.js)与git的版本适配问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-git%E4%B8%8EGitHub%E7%9A%84%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98"><span class="toc-text">3. git与GitHub的连接问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-hexo%E5%85%B6%E5%AE%83%E9%97%AE%E9%A2%98"><span class="toc-text">4. hexo其它问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/19/%E5%A4%A7%E5%AD%A6%E3%81%AE%E7%B4%AF/" title="大学の累"><img src="/images/text/%E5%A4%A7%E5%AD%A6%E7%9A%84%E7%B4%AF.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大学の累"/></a><div class="content"><a class="title" href="/2025/11/19/%E5%A4%A7%E5%AD%A6%E3%81%AE%E7%B4%AF/" title="大学の累">大学の累</a><time datetime="2025-11-19T02:28:28.000Z" title="发表于 2025-11-19 10:28:28">2025-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/17/%E8%BD%AF%E4%BB%B6%E6%B5%AE%E7%94%9F%E5%BD%95/" title="软件浮生录"><img src="/images/text/%E8%BD%AF%E4%BB%B6%E6%B5%AE%E7%94%9F%E5%BD%95.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="软件浮生录"/></a><div class="content"><a class="title" href="/2025/11/17/%E8%BD%AF%E4%BB%B6%E6%B5%AE%E7%94%9F%E5%BD%95/" title="软件浮生录">软件浮生录</a><time datetime="2025-11-17T00:58:50.000Z" title="发表于 2025-11-17 08:58:50">2025-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/16/%E8%AE%BE%E5%A4%87%E6%B5%AE%E7%94%9F%E5%BD%95/" title="设备浮生录"><img src="/images/text/%E8%AE%BE%E5%A4%87%E6%B5%AE%E7%94%9F%E5%BD%95.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设备浮生录"/></a><div class="content"><a class="title" href="/2025/11/16/%E8%AE%BE%E5%A4%87%E6%B5%AE%E7%94%9F%E5%BD%95/" title="设备浮生录">设备浮生录</a><time datetime="2025-11-16T08:44:59.000Z" title="发表于 2025-11-16 16:44:59">2025-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/12/%E5%85%B3%E4%BA%8E%E5%86%99%E4%BD%9C%E8%BF%99%E4%BB%B6%E4%BA%8B%EF%BC%88%E7%AB%99%E9%95%BF%E7%9A%84%E4%B8%AD%E4%BA%8C%E5%AE%A3%E8%A8%80-%EF%BC%89/" title="关于写作这件事（站长的中二宣言~）"><img src="/images/text/%E5%85%B3%E4%BA%8E%E5%86%99%E4%BD%9C%E8%BF%99%E4%BB%B6%E4%BA%8B.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于写作这件事（站长的中二宣言~）"/></a><div class="content"><a class="title" href="/2025/05/12/%E5%85%B3%E4%BA%8E%E5%86%99%E4%BD%9C%E8%BF%99%E4%BB%B6%E4%BA%8B%EF%BC%88%E7%AB%99%E9%95%BF%E7%9A%84%E4%B8%AD%E4%BA%8C%E5%AE%A3%E8%A8%80-%EF%BC%89/" title="关于写作这件事（站长的中二宣言~）">关于写作这件事（站长的中二宣言~）</a><time datetime="2025-05-12T14:58:57.000Z" title="发表于 2025-05-12 22:58:57">2025-05-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/10/%E5%A4%9C%E6%8B%BE%E5%B0%8F%E8%AE%B0/" title="夜拾小记"><img src="/images/text/%E5%A4%9C%E6%8B%BE%E5%B0%8F%E8%AE%B0.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="夜拾小记"/></a><div class="content"><a class="title" href="/2025/05/10/%E5%A4%9C%E6%8B%BE%E5%B0%8F%E8%AE%B0/" title="夜拾小记">夜拾小记</a><time datetime="2025-05-10T06:38:55.000Z" title="发表于 2025-05-10 14:38:55">2025-05-10</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">&copy;2025 By ⎛⎝Wynphor⎠⎞</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">希望你今后的每一次笑，都是真心的。<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://waline-rouge-nu.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script defer src="/live2d-widget/dist/autoload.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script async src="/js/console.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="你想要找什么呢~~" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

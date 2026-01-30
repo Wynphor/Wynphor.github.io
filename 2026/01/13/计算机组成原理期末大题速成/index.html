@@ -1,0 +1,576 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计算机组成原理期末大题速成 | 暮雨浔茶</title><meta name="author" content="⎛⎝Wynphor⎠⎞"><meta name="copyright" content="⎛⎝Wynphor⎠⎞"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="引言 依旧是开篇小故事。计算机组成原理，清朝的教材，建国的教室，刚毕业的老师，流水账式的授课，以及那些永远起不来的下午……这是我对这学期这门课所有的印象。就在所有人在纠结这到底是专业课还是水课时，计组老师笑眯眯地宣布，等出完卷子他会给我们划重点透题，前提是在这之前的教评（大学都这样恶心，教评在期末之前）……大家都默契的一笑，原来还是水课嘛。教评不出意外满分，但当他用不到5分钟的时间在课本上圈圈点点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理期末大题速成">
+<meta property="og:url" content="https://wynphor.github.io/2026/01/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90/index.html">
+<meta property="og:site_name" content="暮雨浔茶">
+<meta property="og:description" content="引言 依旧是开篇小故事。计算机组成原理，清朝的教材，建国的教室，刚毕业的老师，流水账式的授课，以及那些永远起不来的下午……这是我对这学期这门课所有的印象。就在所有人在纠结这到底是专业课还是水课时，计组老师笑眯眯地宣布，等出完卷子他会给我们划重点透题，前提是在这之前的教评（大学都这样恶心，教评在期末之前）……大家都默契的一笑，原来还是水课嘛。教评不出意外满分，但当他用不到5分钟的时间在课本上圈圈点点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wynphor.github.io/images/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90.jpg">
+<meta property="article:published_time" content="2026-01-13T08:55:33.000Z">
+<meta property="article:modified_time" content="2026-01-30T08:48:14.180Z">
+<meta property="article:author" content="⎛⎝Wynphor⎠⎞">
+<meta property="article:tag" content="计算机组成原理">
+<meta property="article:tag" content="期末速成">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wynphor.github.io/images/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "计算机组成原理期末大题速成",
+  "url": "https://wynphor.github.io/2026/01/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90/",
+  "image": "https://wynphor.github.io/images/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90.jpg",
+  "datePublished": "2026-01-13T08:55:33.000Z",
+  "dateModified": "2026-01-30T08:48:14.180Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "⎛⎝Wynphor⎠⎞",
+      "url": "https://wynphor.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://wynphor.github.io/2026/01/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机组成原理期末大题速成',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/transpancy.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(/img/dm12.webp);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-paper-plane"></i><span> 传送门</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 唱片机</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-hashtag"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/comments/"><i class="fa-fw fas fa-commenting"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-user"></i><span> 本楓</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/post/计算机组成原理期末大题速成.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">暮雨浔茶</span></a><a class="nav-page-title" href="/"><span class="site-name">计算机组成原理期末大题速成</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-paper-plane"></i><span> 传送门</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 唱片机</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-hashtag"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/comments/"><i class="fa-fw fas fa-commenting"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-user"></i><span> 本楓</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">计算机组成原理期末大题速成</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-01-13T08:55:33.000Z" title="发表于 2026-01-13 16:55:33">2026-01-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-30T08:48:14.180Z" title="更新于 2026-01-30 16:48:14">2026-01-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-01-30 16:48:14&quot;}" hidden></div><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><hr>
+<p>依旧是开篇小故事。计算机组成原理，清朝的教材，建国的教室，刚毕业的老师，流水账式的授课，以及那些永远起不来的下午……这是我对这学期这门课所有的印象。就在所有人在纠结这到底是专业课还是水课时，计组老师笑眯眯地宣布，等出完卷子他会给我们划重点透题，前提是在这之前的教评（大学都这样恶心，教评在期末之前）……大家都默契的一笑，原来还是水课嘛。教评不出意外满分，但当他用不到5分钟的时间在课本上圈圈点点了几个公式和知识点后光速离场的那一刻，所有人都是懵的——他画的加起来都不够及格线的，更别说还不是原题。三天速通计组83分（实际是两天），完美诠释了我是怎么考上大学的（）。好在最后一切顺利，遂将随手笔记整理放出。</p>
+<blockquote>
+<p>后来考完才知道，这货是把他觉得难的题透出来了，只是想不挂科，谁让你拔高喂！（吐槽）</p>
+</blockquote>
+<h3 id="该部分只适用于大题速成，建议先看期末速成视频，通一遍基础知识点！！！"><a href="#该部分只适用于大题速成，建议先看期末速成视频，通一遍基础知识点！！！" class="headerlink" title="该部分只适用于大题速成，建议先看期末速成视频，通一遍基础知识点！！！"></a>该部分只适用于大题速成，建议先看期末速成视频，通一遍基础知识点！！！</h3><h3 id="笔记为咲楓自用，如有错误，还请指正。"><a href="#笔记为咲楓自用，如有错误，还请指正。" class="headerlink" title="笔记为咲楓自用，如有错误，还请指正。"></a>笔记为咲楓自用，如有错误，还请指正。</h3><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><hr>
+<h2 id="CPU与主存的一些指标"><a href="#CPU与主存的一些指标" class="headerlink" title="CPU与主存的一些指标"></a>CPU与主存的一些指标</h2><h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><ul>
+<li><strong>CPI</strong>：执行一条指令所需的平均时钟周期数</li>
+<li><strong>CPU执行时间</strong>&#x3D;程序指令数×CPI&#x2F;时钟频率</li>
+<li><strong>MIPS</strong>：每秒百万（10^6）指令数<br>即时钟频率（MHz）&#x2F;CPI</li>
+</ul>
+<h3 id="主存"><a href="#主存" class="headerlink" title="主存"></a>主存</h3><ul>
+<li><strong>主存带宽</strong>：单位时间内从主存储器读出的二进制信息量（B&#x2F;s）</li>
+</ul>
+<h2 id="Cache命中率"><a href="#Cache命中率" class="headerlink" title="Cache命中率"></a>Cache命中率</h2><p>若Cache初态为空，则每个字块第一次读取必未命中<br>命中率为 <strong>h&#x3D;命中次数&#x2F;总次数</strong><br>主存-Cache平均访问时间为 <strong>t(a)&#x3D;h×t(c)+(1-h)×t(m)</strong><br>效率为 <strong>e&#x3D;t(a)&#x2F;t(c)</strong><br>提高倍数为 <strong>b&#x3D;t(m)&#x2F;t(a)-1</strong></p>
+<h2 id="Cache与主存的三种映射（设计主存地址）"><a href="#Cache与主存的三种映射（设计主存地址）" class="headerlink" title="Cache与主存的三种映射（设计主存地址）"></a>Cache与主存的三种映射（设计主存地址）</h2><p><strong>主存地址&#x3D;标记+Cache块号+块内地址</strong></p>
+<ul>
+<li><p>全相联映射<br>主存地址的格式为</p>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>块内地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>差</td>
+<td>地址数</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>直接映射<br>主存地址的格式为</p>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>Cache块号</th>
+<th>块内地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>差</td>
+<td>块数</td>
+<td>地址数</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>组相联映射<br>主存地址的格式为</p>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>Cache组号</th>
+<th>块内地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>差</td>
+<td>块数&#x2F;每组块数</td>
+<td>地址数</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="主存与CPU的连接"><a href="#主存与CPU的连接" class="headerlink" title="主存与CPU的连接"></a>主存与CPU的连接</h2><ol>
+<li>系统程序区-&gt;ROM，用户地址区-&gt;RAM</li>
+<li>首选位扩展（由数据线体现，每片控制一定的位数，即数据线）</li>
+<li>ROM的地址线每个芯片都连（系统程序区一般为最小地址）</li>
+<li>74138译码器的三个输入位（ABC）分别对应用于RAM的三根地址线，芯片对应的输出位编号由其三根地址线的地址决定，均为低电平。输入位G1为高电平（没有连5V），G2A(非)、G2B(非)为低电平（一般连MREQ(非)和最后一根地址线）。低电平用画圈表示</li>
+<li>RAM均连R&#x2F;W线，ROM均连PD(非)&#x2F;Progr线</li>
+</ol>
+<h2 id="CPU用于外设的时间占比"><a href="#CPU用于外设的时间占比" class="headerlink" title="CPU用于外设的时间占比"></a>CPU用于外设的时间占比</h2><ol>
+<li>求单位时间传输字数&#x2F;块数<ul>
+<li>每秒传输字数 &#x3D; 传输速率 ÷ 每字字节数</li>
+<li>块数 &#x3D; 平均传输长度 ÷ 每字字节数</li>
+</ul>
+</li>
+<li>计算每字&#x2F;块 CPU 时间<ul>
+<li>轮询&#x2F;中断&#x2F;DMA各自的周期数 × 每周期时间<ol>
+<li>程序查询方式<br>每传输一字，CPU要查询一次</li>
+<li>中断方式<br>中断时传输，例如每中断传输一字</li>
+<li>DMA方式<br>通过硬件（DMA处理器）实现主存与I&#x2F;O设备间的直接数据传输，无需CPU干预</li>
+<li>通道方式<br>与CPU分时使用主存，实现CPU运算与I&#x2F;O设备并行工作</li>
+<li>处理机方式</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>求每秒 CPU 总时间<ul>
+<li>每秒传输字数&#x2F;块数 × 每字&#x2F;块 CPU时间</li>
+</ul>
+</li>
+<li>CPU占用比率<ul>
+<li>CPU总时间 &#x2F; 总时间（1秒）</li>
+</ul>
+</li>
+</ol>
+<h2 id="原码反码补码移码"><a href="#原码反码补码移码" class="headerlink" title="原码反码补码移码"></a>原码反码补码移码</h2><ul>
+<li><p>整数</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>原码</th>
+<th>反码</th>
+<th>补码</th>
+<th>移码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正数</td>
+<td>相同</td>
+<td>相同</td>
+<td>相同</td>
+<td>补码符号位取反</td>
+</tr>
+<tr>
+<td>负数</td>
+<td>符号位取1</td>
+<td>其余取反</td>
+<td>反码+1</td>
+<td>补码符号位取反</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>小数</p>
+<ol>
+<li>小数 x2进1</li>
+<li>分数（分母为2的n次方）<br>分子二进制移位</li>
+</ol>
+</li>
+</ul>
+<h2 id="定-浮点数及运算"><a href="#定-浮点数及运算" class="headerlink" title="定&#x2F;浮点数及运算"></a>定&#x2F;浮点数及运算</h2><h3 id="定-浮点数"><a href="#定-浮点数" class="headerlink" title="定&#x2F;浮点数"></a>定&#x2F;浮点数</h3><ul>
+<li>定点数<br><strong>小数点的位置固定</strong><br>机器数表现形式<ul>
+<li><p>纯整数</p>
+<table>
+<thead>
+<tr>
+<th>数符</th>
+<th>,</th>
+<th>数值</th>
+</tr>
+</thead>
+</table>
+</li>
+<li><p>纯小数</p>
+<table>
+<thead>
+<tr>
+<th>数符</th>
+<th>.</th>
+<th>尾数</th>
+</tr>
+</thead>
+</table>
+</li>
+</ul>
+</li>
+<li>浮点数<ul>
+<li><p>表示形式 <strong>N&#x3D;S×r^j</strong><br>机器码表现形式</p>
+<table>
+<thead>
+<tr>
+<th>阶符</th>
+<th>,</th>
+<th>阶码</th>
+<th>;</th>
+<th>数符</th>
+<th>.</th>
+<th>尾数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>j</td>
+<td></td>
+<td></td>
+<td></td>
+<td>S</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>32位短浮点数（IEEE754）</p>
+<ol>
+<li>10-&gt;2</li>
+<li>二进制科学计数法<br>符号位首位<br>阶码8位，采用移码（E&#x3D;e+127）的方式<br>尾数23位</li>
+<li>2-&gt;16</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>阶符</th>
+<th>,</th>
+<th>阶码</th>
+<th>;</th>
+<th>数符</th>
+<th>.</th>
+<th>尾数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td>移码</td>
+<td></td>
+<td></td>
+<td>原码</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>转十进制<br>上面反过来</p>
+<blockquote>
+<p>注意正负号</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="定-浮点数运算"><a href="#定-浮点数运算" class="headerlink" title="定&#x2F;浮点数运算"></a>定&#x2F;浮点数运算</h3><h4 id="定点数"><a href="#定点数" class="headerlink" title="定点数"></a>定点数</h4><ul>
+<li>加减运算（变形补码表示，运算符2位）<br>溢出判断<br>数符异或1为溢出<ul>
+<li>01 上溢</li>
+<li>10 下溢</li>
+</ul>
+</li>
+<li>乘法<ol>
+<li>部分积初始值为0.0…，乘数为y*（即|y|）</li>
+<li>乘数最后一位为1，加x*；为0，加0</li>
+<li>部分积与乘数右移顺承，即部分积最后一位为乘数第一位，乘数最后一位舍去</li>
+<li>重复23步骤，直至原乘数消耗完毕，部分积与乘数为结果绝对值</li>
+<li>xy数符异或，判断正负</li>
+</ol>
+</li>
+<li>除法<ol>
+<li>被除数（余数）为x*，商为0.0…</li>
+<li>加上[-y*]补</li>
+<li>正数商1，负数商0，左移</li>
+<li>重复23步骤，直至原被除数（余数）消耗完毕，商为结果绝对值</li>
+<li>xy数符异或，判断正负</li>
+</ol>
+</li>
+</ul>
+<h4 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h4><ul>
+<li>浮点加减运算（机器补码表示，运算符2位）<ol>
+<li>对阶<br>小阶向大阶看齐，小阶尾数右移</li>
+<li>尾数求和</li>
+<li>规格化<ul>
+<li>左规<br>当尾数出现00.0xxx或11.1xxx时，尾数左移，阶码-1</li>
+<li>右规<br>当尾数出现01.xxx或10.xxx时，尾数右移补1，阶码+1</li>
+</ul>
+</li>
+<li>舍入<ul>
+<li>“0舍1入”法</li>
+<li>“恒置1”法</li>
+</ul>
+</li>
+<li>溢出判断<br>阶符异或1为溢出<ul>
+<li>01 上溢</li>
+<li>10 下溢</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="中断屏蔽及CPU执行程序轨迹（铅笔）"><a href="#中断屏蔽及CPU执行程序轨迹（铅笔）" class="headerlink" title="中断屏蔽及CPU执行程序轨迹（铅笔）"></a>中断屏蔽及CPU执行程序轨迹（铅笔）</h2><p>若中断处理次序为 <strong>4-&gt;1-&gt;3-&gt;2</strong></p>
+<table>
+<thead>
+<tr>
+<th>中断源\屏蔽字</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>优先处理次序高的服务，若有剩余时间则处理未完成的低次序服务</p>
+<p>#计算机组成原理 #study</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><hr>
+<p>祝各位考的开心。（好冷的笑话）</p>
+<h2 id="借物表"><a href="#借物表" class="headerlink" title="借物表"></a>借物表</h2><hr>
+<ul>
+<li>期末速成基础知识点视频及笔记<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JvNszPEA4/?share_source=copy_web&vd_source=2be27498b130e814284b01b5fbdcdd42">【计组】计组6小时期末速成|计算机组成原理期末复习|各版本教材都可听该课！唐朔飞第三版也可用</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/1148783943619706880?spm_id_from=333.1387.0.0">笔记</a></li>
+<li>期末速成大题视频<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Wb4y1g7Xs/?share_source=copy_web&vd_source=2be27498b130e814284b01b5fbdcdd42">[计组速成]计算机组成原理期末1小时做题速成</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1P3411v7gd/?share_source=copy_web&vd_source=2be27498b130e814284b01b5fbdcdd42">计算机组成原理速成、不挂科、搞定期末考试大题（横屏版）</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wynphor.github.io">⎛⎝Wynphor⎠⎞</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wynphor.github.io/2026/01/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90/">https://wynphor.github.io/2026/01/13/计算机组成原理期末大题速成/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wynphor.github.io" target="_blank">暮雨浔茶</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><a class="post-meta__tags" href="/tags/%E6%9C%9F%E6%9C%AB%E9%80%9F%E6%88%90/">期末速成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></div><div class="post-share"><div class="social-share" data-image="/images/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><link rel="stylesheet" href="/css/coin.css" media="defer" onload="this.media='all'"/><div class="post-reward"><button class="tip-button reward-button"><span class="tip-button__text">投喂咲枫</span><div class="coin-wrapper"><div class="coin"><div class="coin__middle"></div><div class="coin__back"></div><div class="coin__front"></div></div></div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></button></div><audio id="coinAudio" src="https://npm.elemecdn.com/akilar-candyassets@1.0.36/audio/aowu.m4a"></audio><script defer="defer" src="/js/coin.js"></script><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/01/22/2025%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" title="2025年度总结"><img class="cover" src="/images/post/2025%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">2025年度总结</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a><a class="pagination-related" href="/2025/11/22/%E7%AC%AC%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%86%AC%E5%A4%A9/" title="第二年的冬天"><img class="cover" src="/images/post/%E7%AC%AC%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%86%AC%E5%A4%A9.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">第二年的冬天</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">⎛⎝Wynphor⎠⎞</div><div class="author-info-description">看君终日常安卧，何事纷纷去又回？</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Wynphor"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Wynphor" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://t.me/gulu_lulu" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a><a class="social-icon" href="mailto:wanf51566@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">咲枫很懒哦，什么也没有留下诶……</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%A5%E9%83%A8%E5%88%86%E5%8F%AA%E9%80%82%E7%94%A8%E4%BA%8E%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90%EF%BC%8C%E5%BB%BA%E8%AE%AE%E5%85%88%E7%9C%8B%E6%9C%9F%E6%9C%AB%E9%80%9F%E6%88%90%E8%A7%86%E9%A2%91%EF%BC%8C%E9%80%9A%E4%B8%80%E9%81%8D%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-text">该部分只适用于大题速成，建议先看期末速成视频，通一遍基础知识点！！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%94%E8%AE%B0%E4%B8%BA%E5%92%B2%E6%A5%93%E8%87%AA%E7%94%A8%EF%BC%8C%E5%A6%82%E6%9C%89%E9%94%99%E8%AF%AF%EF%BC%8C%E8%BF%98%E8%AF%B7%E6%8C%87%E6%AD%A3%E3%80%82"><span class="toc-text">笔记为咲楓自用，如有错误，还请指正。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-text">正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E4%B8%8E%E4%B8%BB%E5%AD%98%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8C%87%E6%A0%87"><span class="toc-text">CPU与主存的一些指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU"><span class="toc-text">CPU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E5%AD%98"><span class="toc-text">主存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache%E5%91%BD%E4%B8%AD%E7%8E%87"><span class="toc-text">Cache命中率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache%E4%B8%8E%E4%B8%BB%E5%AD%98%E7%9A%84%E4%B8%89%E7%A7%8D%E6%98%A0%E5%B0%84%EF%BC%88%E8%AE%BE%E8%AE%A1%E4%B8%BB%E5%AD%98%E5%9C%B0%E5%9D%80%EF%BC%89"><span class="toc-text">Cache与主存的三种映射（设计主存地址）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E5%AD%98%E4%B8%8ECPU%E7%9A%84%E8%BF%9E%E6%8E%A5"><span class="toc-text">主存与CPU的连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E7%94%A8%E4%BA%8E%E5%A4%96%E8%AE%BE%E7%9A%84%E6%97%B6%E9%97%B4%E5%8D%A0%E6%AF%94"><span class="toc-text">CPU用于外设的时间占比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81%E7%A7%BB%E7%A0%81"><span class="toc-text">原码反码补码移码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A-%E6%B5%AE%E7%82%B9%E6%95%B0%E5%8F%8A%E8%BF%90%E7%AE%97"><span class="toc-text">定&#x2F;浮点数及运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A-%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">定&#x2F;浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A-%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-text">定&#x2F;浮点数运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0"><span class="toc-text">定点数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">浮点数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%B1%8F%E8%94%BD%E5%8F%8ACPU%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%BD%A8%E8%BF%B9%EF%BC%88%E9%93%85%E7%AC%94%EF%BC%89"><span class="toc-text">中断屏蔽及CPU执行程序轨迹（铅笔）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%9F%E7%89%A9%E8%A1%A8"><span class="toc-text">借物表</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/30/INFJ-%E7%8B%AC%E6%9C%89%E7%9A%84%E8%AF%85%E5%92%92%EF%BC%9A%E7%A5%9E%E6%80%A7%E5%AD%A4%E7%8B%AC/" title="INFJ | 独有的诅咒：神性孤独"><img src="/images/post/INFJ0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="INFJ | 独有的诅咒：神性孤独"/></a><div class="content"><a class="title" href="/2026/01/30/INFJ-%E7%8B%AC%E6%9C%89%E7%9A%84%E8%AF%85%E5%92%92%EF%BC%9A%E7%A5%9E%E6%80%A7%E5%AD%A4%E7%8B%AC/" title="INFJ | 独有的诅咒：神性孤独">INFJ | 独有的诅咒：神性孤独</a><time datetime="2026-01-30T03:34:46.000Z" title="发表于 2026-01-30 11:34:46">2026-01-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/22/2025%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" title="2025年度总结"><img src="/images/post/2025%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025年度总结"/></a><div class="content"><a class="title" href="/2026/01/22/2025%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" title="2025年度总结">2025年度总结</a><time datetime="2026-01-22T06:06:28.000Z" title="发表于 2026-01-22 14:06:28">2026-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90/" title="计算机组成原理期末大题速成"><img src="/images/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机组成原理期末大题速成"/></a><div class="content"><a class="title" href="/2026/01/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%A7%E9%A2%98%E9%80%9F%E6%88%90/" title="计算机组成原理期末大题速成">计算机组成原理期末大题速成</a><time datetime="2026-01-13T08:55:33.000Z" title="发表于 2026-01-13 16:55:33">2026-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/22/%E7%AC%AC%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%86%AC%E5%A4%A9/" title="第二年的冬天"><img src="/images/post/%E7%AC%AC%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%86%AC%E5%A4%A9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二年的冬天"/></a><div class="content"><a class="title" href="/2025/11/22/%E7%AC%AC%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%86%AC%E5%A4%A9/" title="第二年的冬天">第二年的冬天</a><time datetime="2025-11-22T04:35:30.000Z" title="发表于 2025-11-22 12:35:30">2025-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/19/%E5%A4%A7%E5%AD%A6%E3%81%AE%E7%B4%AF/" title="大学の累"><img src="/images/post/%E5%A4%A7%E5%AD%A6%E7%9A%84%E7%B4%AF.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大学の累"/></a><div class="content"><a class="title" href="/2025/11/19/%E5%A4%A7%E5%AD%A6%E3%81%AE%E7%B4%AF/" title="大学の累">大学の累</a><time datetime="2025-11-19T02:28:28.000Z" title="发表于 2025-11-19 10:28:28">2025-11-19</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By ⎛⎝Wynphor⎠⎞</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">希望你今后的每一次笑，都是真心的。<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://waline-rouge-nu.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script defer src="/live2d-widget/dist/autoload.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script async src="/js/console.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="你想要找什么呢~~" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

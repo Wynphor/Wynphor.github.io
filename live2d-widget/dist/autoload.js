@@ -32,13 +32,14 @@ Promise.all([
   loadExternalResource(live2d_path + 'live2d.min.js', 'js'),
   loadExternalResource(live2d_path + 'waifu-tips.js', 'js')
 ]).then(() => {
-  // 配置选项的具体用法见 README.md
+  // 重置可能残留的旧模型 id，避免指向不存在的索引
+  localStorage.setItem('modelId', '1');
+  localStorage.setItem('modelTexturesId', '0');
   initWidget({
     waifuPath: live2d_path + 'waifu-tips.json',
     // 模型列表与模型文件均使用站点本地路径
     // 结构：/live2d-widget/model_list.json + /live2d-widget/model/<name>/index.json
     cdnPath: '/live2d-widget/',
-    // apiPath: 'https://live2d.fghrsh.net/api/',
     tools: ['hitokoto', 'asteroids', 'switch-model', 'switch-texture', 'photo', 'info', 'quit']
   });
 });

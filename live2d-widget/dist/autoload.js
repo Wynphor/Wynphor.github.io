@@ -1,6 +1,7 @@
-// live2d_path 参数建议使用绝对路径
-const live2d_path = 'https://fastly.jsdelivr.net/npm/live2d-widgets@0/';
-// const live2d_path = '/live2d-widget/dist/';
+// live2d_path：站点本地资源（已全本地化）
+const live2d_path = '/live2d-widget/dist/';
+// 如需回退第三方 CDN，可改回：
+// const live2d_path = 'https://fastly.jsdelivr.net/npm/live2d-widgets@0/';
 
 // 封装异步加载资源的方法
 function loadExternalResource(url, type) {
@@ -34,8 +35,10 @@ Promise.all([
   // 配置选项的具体用法见 README.md
   initWidget({
     waifuPath: live2d_path + 'waifu-tips.json',
+    // 模型列表与模型文件均使用站点本地路径
+    // 结构：/live2d-widget/model_list.json + /live2d-widget/model/<name>/index.json
+    cdnPath: '/live2d-widget/',
     // apiPath: 'https://live2d.fghrsh.net/api/',
-    cdnPath: 'https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/',
     tools: ['hitokoto', 'asteroids', 'switch-model', 'switch-texture', 'photo', 'info', 'quit']
   });
 });

@@ -31,3 +31,11 @@
   margin-left: 0 !important;
   max-width: 100% !important;
 }
+
+/* gray bar slightly wider than text column */
+.type-404 #cf-wrapper .bg-gradient-gray {
+  width: calc(100% + 32px) !important;
+  max-width: none !important;
+  margin-left: -16px !important;
+  margin-right: -16px !important;
+}

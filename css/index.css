@@ -1975,6 +1975,10 @@ figure.highlight pre .javascript .function {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.type-404 #cf-wrapper .w-240 {
+  width: 92% !important;
+  max-width: 1180px !important;
+}
 .type-404 #cf-wrapper .bg-gradient-gray {
   width: 100vw !important;
   margin-left: calc(50% - 50vw) !important;

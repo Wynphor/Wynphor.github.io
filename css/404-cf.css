@@ -49,3 +49,20 @@
   margin-right: -16px !important;
   box-sizing: border-box !important;
 }
+
+/* text columns stay full of parent; page shadow panel matches gray bar */
+.type-404 #cf-wrapper .w-240,
+.type-404 #cf-error-details .w-240 {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.type-404 #page {
+  width: calc(100% + 32px) !important;
+  max-width: none !important;
+  margin-left: -16px !important;
+  margin-right: -16px !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05) !important;
+}

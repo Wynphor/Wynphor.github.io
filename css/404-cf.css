@@ -39,3 +39,13 @@
   margin-left: -16px !important;
   margin-right: -16px !important;
 }
+
+/* body column same width as gray bar */
+.type-404 #cf-wrapper .w-240,
+.type-404 #cf-error-details .w-240 {
+  width: calc(100% + 32px) !important;
+  max-width: none !important;
+  margin-left: -16px !important;
+  margin-right: -16px !important;
+  box-sizing: border-box !important;
+}

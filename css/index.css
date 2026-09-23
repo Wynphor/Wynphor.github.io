@@ -1940,9 +1940,10 @@ figure.highlight pre .javascript .function {
 .type-404 #page {
   margin: 0;
   padding: 0;
-  width: calc(100% + 32px);
-  margin-left: -16px;
-  margin-right: -16px;
+  width: calc(100% + 32px) !important;
+  max-width: none !important;
+  margin-left: -16px !important;
+  margin-right: -16px !important;
 }
 .type-404 #cf-wrapper {
   width: 100%;
@@ -1950,9 +1951,16 @@ figure.highlight pre .javascript .function {
   text-align: left;
 }
 .type-404 #cf-wrapper .bg-gradient-gray {
-  width: calc(100% + 32px);
-  margin-left: -16px;
-  margin-right: -16px;
+  width: calc(100% + 32px) !important;
+  max-width: none !important;
+  margin-left: -16px !important;
+  margin-right: -16px !important;
+}
+.type-404 #cf-wrapper .w-240 {
+  width: 60rem !important;
+  max-width: 90% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 .type-404 .nc {
   margin-top: 0;

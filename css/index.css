@@ -1931,9 +1931,23 @@ figure.highlight pre .javascript .function {
     filter: alpha(opacity=60);
   }
 }
+.type-404 .layout {
+  max-width: 100% !important;
+  padding: 0;
+  width: 100%;
+}
+@media screen and (min-width: 2000px) {
+  .type-404 .layout {
+    max-width: 100% !important;
+  }
+}
+.type-404 .layout > div {
+  width: 100% !important;
+}
 .type-404 #page {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 .type-404 #cf-wrapper {
   width: 100%;

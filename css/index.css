@@ -1932,10 +1932,11 @@ figure.highlight pre .javascript .function {
   }
 }
 .type-404 .layout {
-  max-width: none;
+  max-width: none !important;
   width: 100%;
   padding-left: 0;
   padding-right: 0;
+  overflow-x: hidden;
 }
 .type-404 #page {
   margin: 0;
@@ -1957,7 +1958,7 @@ figure.highlight pre .javascript .function {
   margin-right: 0 !important;
 }
 .type-404 #cf-wrapper .w-240 {
-  width: 60rem !important;
+  width: 60em !important;
   max-width: 90% !important;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -1970,7 +1971,14 @@ figure.highlight pre .javascript .function {
   display: none;
 }
 .type-404 + #rightside {
-  display: none;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  -webkit-transform: translate(-58px, 0);
+  -moz-transform: translate(-58px, 0);
+  -o-transform: translate(-58px, 0);
+  -ms-transform: translate(-58px, 0);
+  transform: translate(-58px, 0);
 }
 .article-sort {
   margin-left: 10px;

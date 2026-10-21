@@ -1,0 +1,91 @@
+/* 首页大屏：左右旋转叠影 */
+#page-header.full_page {
+  overflow: hidden;
+}
+
+#page-header-child-1,
+#page-header-child-2 {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  filter: drop-shadow(4px 4px 12px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+
+#page-header-child-1 {
+  left: -540px;
+  transform: rotateZ(120deg);
+  transition: left 0.6s, opacity 0.6s;
+}
+
+#page-header-child-2 {
+  right: -540px;
+  transform: rotateZ(-120deg);
+  transition: right 0.8s, opacity 0.8s;
+}
+
+.hero-stack-layer-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* 反向旋转保持图片正向，放大后与底层错位形成叠影 */
+#page-header-child-1 .hero-stack-layer-bg {
+  transform: rotateZ(-120deg) scale(1.3);
+}
+
+#page-header-child-2 .hero-stack-layer-bg {
+  transform: rotateZ(120deg) scale(1.3);
+}
+
+#page-header.full_page:hover #page-header-child-1 {
+  left: 0;
+  opacity: 0.4;
+}
+
+#page-header.full_page:hover #page-header-child-2 {
+  right: 0;
+  opacity: 0.4;
+}
+
+#page-header.full_page #site-info,
+#page-header.full_page #scroll-down {
+  z-index: 2;
+}
+
+/* 有精确指针（鼠标）的设备才隐藏标题，触摸设备保持可见 */
+@media (hover: hover) and (pointer: fine) {
+  #page-header.full_page #site-title,
+  #page-header.full_page #site-subtitle {
+    opacity: 0;
+    transition: opacity 1s, text-shadow 1s linear !important;
+  }
+
+  #page-header.full_page:hover #site-title,
+  #page-header.full_page:hover #site-subtitle {
+    opacity: 1;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  #page-header-child-1,
+  #page-header-child-2 {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #page-header-child-1,
+  #page-header-child-2,
+  #page-header.full_page #site-title,
+  #page-header.full_page #site-subtitle {
+    transition: none !important;
+  }
+}
